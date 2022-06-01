@@ -1,0 +1,61 @@
+<div class="p-5">
+  <div class="container shadow">
+    <div class="p-5 border border-light rounded">
+      <h6>Lista de Compras</h6>
+      <hr>
+      <form [formGroup]="forms" (ngSubmit)="CadastrarProduto()">
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <input type="text" class="form-control form-control-sn" placeholder="Nome do produto" formControlName="nome">
+
+              </div>
+
+            </div>
+            <div class="col-2">
+              <div class="form-group">
+                <input type="number" class="form-control form-control-sn" placeholder="Quantidade do produto" formControlName="quantidade">
+
+              </div>
+
+            </div>
+            <div class="col-6">
+              <button type="submit" class="btn btn">Adicionar</button>
+
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+      <div class="container">
+        <div class="pt-5 row" *ngIf="produtos?.length === 0">
+          <textarea class="text-danger">Sem Produtos ainda</textarea>
+
+        </div>
+        <div class="pt-5 row" *ngIf="produtos?.length > 0">
+          <table class="table">
+            <tr class="thead-light">
+              <th>Nome</th>
+              <th>Quantidade</th>
+              <th>Ações</th>
+
+            </tr>
+            <tr *ngFor="let produto of produtos" [class.table-danger]="produto.isComprado === false">
+              <td> {{produto.nome}}  </td>
+              <td> {{produto.quantidade}} </td>
+              <td>
+                <ion-button color="success">Success</ion-button>
+
+              </td>
+
+            </tr>
+          </table>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
